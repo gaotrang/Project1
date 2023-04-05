@@ -24,7 +24,8 @@ border-color: #000000
     border-color: blued
 }
 `;
-export const User = styled.div`
+
+export const Products = styled.div`
     display: grid;
     grid-template-columns: 3rem 1fr;
     gap: 1rem;
@@ -41,4 +42,8 @@ export const Image = styled.div`
     background-repeat: no-repeat;
     border-radius: 50%;
     padding-top: 100%;
+`;
+export const Price = styled.div`
+    color: ${props => props.color};
+    font-weight: 700;
 `;

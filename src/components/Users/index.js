@@ -1,13 +1,14 @@
 
 import { useState, useMemo, useEffect } from "react";
 import TableUser from "./TableUser";
-import { ButtonCreate, SearchContainer } from "./styled"
+import ModalFormUser from "./ModalFormUser";
+import { ButtonCreate, SearchContainer } from "./styled";
 import axios from "axios";
 import { Modal } from "antd";
 // import ButtonImport from "./ButtonImport";
-// import SearchBox from "./SearchBox";
-import ModalFormUser from "./ModalFormUser";
-const DEFAULT_USERS = { name: "", avatar: "", email: "", phone: "", status: "" }
+import SearchBox from "./SearchBox";
+
+const DEFAULT_USERS = { name: "", avatar: "", email: "", phone: "", status: "" };
 
 const Users = () => {
 
@@ -97,15 +98,15 @@ const Users = () => {
             });
 
         };
-    }
+    };
     // const onSearch = (e) => {
     //     setKeyWord(e.target.value)
-    // }
+    // };
     const searchDataSource = useMemo(() => {
         if (keyword) {
 
             return dataSource.filter((item) => {
-                return item.name.includes(keyword) || item.country.includes(keyword)
+                return item.name.includes(keyword) || item.email.includes(keyword)
             })
         }
         return dataSource

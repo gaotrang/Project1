@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { Form, Input, InputNumber, Modal, Select } from "antd";
+import { Form, Input, InputNumber, Modal } from "antd";
 
-const ModalFormUser = (props) => {
+const ModalFormProducts = (props) => {
     const [form] = Form.useForm()
 
     useEffect(() => {
@@ -30,40 +30,35 @@ const ModalFormUser = (props) => {
     return (
         <Modal open={props.open || props.loading} confirmLoading={props.loading} onOk={onSubmit} onCancel={onCancel}>
             <Form form={form} layout="vertical">
-                <Form.Item name="name" label="Name" rules={[{ required: true, message: 'Bat buoc' }]}>
+                <Form.Item name="name" label="Name" rules={[{ required: true, message: 'bắt buộc' }]}>
                     <Input />
                 </Form.Item>
 
-                <Form.Item name="avatar" label="avatar" rules={[{ required: true, message: 'Bat buoc' }]}>
+                <Form.Item name="thumbnail" label="Picture" rules={[{ required: true, message: 'bắt buộc' }]}>
                     <Input />
-
                 </Form.Item>
 
                 <Form.Item
-                    name="email"
-                    label="Email"
+                    name="code"
+                    label="Code"
                     rules={[
-                        { required: true, message: 'Bat buoc' }, { type: "email" }
+                        { required: true, message: 'bắt buộc' },
                     ]}>
                     <Input />
                 </Form.Item>
 
-                <Form.Item name='phone' label='Phone' rules={[{ required: true }, { message: 'Bắt buộc' }]}>
-                    <InputNumber />
+                <Form.Item name='price' label='Price' rules={[{ required: true }, { message: 'Bắt buộc' }]}>
+                    <Input />
                 </Form.Item>
 
-                <Form.Item name="status" label="Status" rules={[{ required: true, message: 'Bắt buộc' }]}>
-                    <Select options={[
-                        { value: 'ON', label: 'ON' },
-                        { value: 'OFF', label: 'OFF' }
-                    ]} />
-
+                <Form.Item name="description" label="Description" rules={[{ required: true, message: 'Bắt buộc' }]}>
+                    <Input.TextArea />
                 </Form.Item>
 
             </Form>
         </Modal>
     )
 };
-export default ModalFormUser;
+export default ModalFormProducts;
 
 

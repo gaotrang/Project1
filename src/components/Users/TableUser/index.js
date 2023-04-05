@@ -1,5 +1,5 @@
 import { Table } from "antd";
-import { Actions, ButtonActions, Country, Image } from "./styled"
+import { Actions, ButtonActions, User, Image } from "./styled"
 
 const TableUser = (props) => {
 
@@ -8,22 +8,18 @@ const TableUser = (props) => {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            width: "20%"
+            width: "15%"
         },
         {
             title: 'Avatar',
             dataIndex: 'avatar',
             key: 'avatar',
-            width: "30%",
+            width: "15%",
             render: (_, item) => {
                 return (
-                    <Country>
+                    <User>
                         <Image src={item.avatar} />
-                        <div>
-                            <h6>{item.avatar}</h6>
-
-                        </div>
-                    </Country>
+                    </User>
                 )
             }
         },
@@ -37,13 +33,13 @@ const TableUser = (props) => {
             title: 'Phone',
             dataIndex: 'phone',
             key: 'phone',
-            width: "15%"
+            width: "17%"
         },
         {
             title: 'Status',
             dataIndex: 'status',
             key: 'status',
-            width: "15%"
+            width: "17%"
         },
         {
             title: "",
