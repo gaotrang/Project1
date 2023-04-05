@@ -7,8 +7,25 @@ export const Actions = styled.div`
         margin-right: 20px;
     }
 `;
-export const ButtonActions = styled(Button)`
+export const ButtonEdit = styled(Button)`
 background: gray;
+color: #000000;
+border-color: #000000
+
+&:hover {
+    background: red;
+    color: #eeeeee;
+    border-color: #000000
+
+}
+&:active, &:focus {
+    background: ;
+    color: #000000;
+    border-color: blued
+}
+`;
+export const ButtonDelete = styled(Button)`
+background: #c0392b;
 color: #000000;
 border-color: #000000
 

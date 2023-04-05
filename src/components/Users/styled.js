@@ -3,7 +3,7 @@ import { Input, Button } from "antd";
 
 export const ButtonCreate = styled(Button)` 
     display: block;
-
+    background: gray;
 
     &:hover {
         background: orange;
@@ -22,9 +22,10 @@ export const SearchContainer = styled.div`
    justify-content: space-between;
    margin-bottom: 1.25rem;
 
-
 `
 export const SearchBox = styled(Input.Search)`
     width: 30%;
+    opacity: 1;
+    
 `
 

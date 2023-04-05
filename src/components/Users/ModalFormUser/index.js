@@ -48,7 +48,7 @@ const ModalFormUser = (props) => {
                     <Input />
                 </Form.Item>
 
-                <Form.Item name='phone' label='Phone' rules={[{ required: true }, { message: 'Bắt buộc' }]}>
+                <Form.Item name='phone' label='Phone' >
                     <InputNumber />
                 </Form.Item>
 

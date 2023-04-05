@@ -8,7 +8,7 @@ import { ButtonCreate, SearchContainer } from "./styled"
 import axios from "axios";
 import { Modal } from "antd";
 // import ButtonImport from "./ButtonImport";
-// import SearchBox from "./SearchBox";
+import SearchBox from "./SearchBox";
 const DEFAULT_PRODUCTS = { name: "", code: "", price: "", description: "", thumbnail: "" }
 
 const Products = () => {
@@ -29,7 +29,6 @@ const Products = () => {
 
     const fetchData = () => {
         setTableLoading(true)
-
         axios
             .get('https://6401de2aab6b7399d0ae7950.mockapi.io/api/1/products')
             .then((res) => {
@@ -45,7 +44,7 @@ const Products = () => {
     const onEdit = (id) => {
         setItemLoading(true)
         axios
-            .get(`https://6401de2aab6b7399d0ae7950.mockapi.io/api/1/products${id}`)
+            .get(`https://6401de2aab6b7399d0ae7950.mockapi.io/api/1/products/${id}`)
             .then((res) => {
                 setItemLoading(false)
                 setFormData(res.data);
@@ -61,7 +60,7 @@ const Products = () => {
             onOk() {
                 setItemLoading(true)
                 axios
-                    .delete(`https://6401de2aab6b7399d0ae7950.mockapi.io/api/1/products${id}`)
+                    .delete(`https://6401de2aab6b7399d0ae7950.mockapi.io/api/1/products/${id}`)
                     .then((res) => {
                         setItemLoading(false)
                         fetchData()
@@ -95,18 +94,12 @@ const Products = () => {
                 setOpen(false);
                 fetchData()
             });
-            // setDataSource([
-            //     ...dataSource,
-            //     {
-            //         id: Math.random(),
-            //         ...data,
-            //     },
-            // ]);
+
         };
     }
-    // const onSearch = (e) => {
-    //     setKeyWord(e.target.value)
-    // }
+    const onSearch = (e) => {
+        setKeyWord(e.target.value)
+    };
     const searchDataSource = useMemo(() => {
         if (keyword) {
 
@@ -137,7 +130,7 @@ const Products = () => {
                 onChange={onChange} />
 
             <SearchContainer>
-                {/* <SearchBox onChange={onSearch} /> */}
+                <SearchBox onChange={onSearch} />
                 <div>
                     <ButtonCreate onClick={onCreate}>New Products</ButtonCreate>
                 </div>

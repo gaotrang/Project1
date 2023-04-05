@@ -47,8 +47,8 @@ const ModalFormProducts = (props) => {
                     <Input />
                 </Form.Item>
 
-                <Form.Item name='price' label='Price' rules={[{ required: true }, { message: 'Bắt buộc' }]}>
-                    <Input />
+                <Form.Item name='price' label='Price' >
+                    <InputNumber />
                 </Form.Item>
 
                 <Form.Item name="description" label="Description" rules={[{ required: true, message: 'Bắt buộc' }]}>

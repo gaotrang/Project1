@@ -7,11 +7,12 @@ import axios from "axios";
 import { Modal } from "antd";
 // import ButtonImport from "./ButtonImport";
 import SearchBox from "./SearchBox";
-
+import { useLocation } from "react-router-dom"
 const DEFAULT_USERS = { name: "", avatar: "", email: "", phone: "", status: "" };
 
 const Users = () => {
 
+    const location = useLocation();
     const [formData, setFormData] = useState(DEFAULT_USERS)
     const [dataSource, setDataSource] = useState([])
     const [open, setOpen] = useState(false)
@@ -22,20 +23,23 @@ const Users = () => {
 
 
     useEffect(() => {
-        axios.get('https://6401de2aab6b7399d0ae7950.mockapi.io/api/1/User').then((res) => {
-            setDataSource(res.data)
-        })
-    }, []);
+
+        fetchData();
+    }, [location]);
 
     const fetchData = () => {
-        setTableLoading(true)
+        const searchParams = new URLSearchParams(location.search);
+        const baseUrl = "https://6401de2aab6b7399d0ae7950.mockapi.io/api/1/User";
+        const keyword = searchParams.has("keyword") ? searchParams.get("keyword") : "";
+        const page = searchParams.has("page") ? searchParams.get("page") : 1;
+        const limit = searchParams.has("limit") ? searchParams.get("limit") : 10;
 
-        axios
-            .get('https://6401de2aab6b7399d0ae7950.mockapi.io/api/1/User')
-            .then((res) => {
-                setDataSource(res.data)
-                setTableLoading(false)
-            });
+        setTableLoading(true);
+        //muốn xem tổng số trang thì bỏ qua &page=${page}&limit=${limit} dòng bên dưới
+        axios.get(`${baseUrl}?keyword=${keyword}&page=${page}&limit=${limit}`).then((res) => {
+            setDataSource(res.data)
+            setTableLoading(false)
+        });
     };
 
     const onCreate = () => {
@@ -99,9 +103,9 @@ const Users = () => {
 
         };
     };
-    // const onSearch = (e) => {
-    //     setKeyWord(e.target.value)
-    // };
+    const onSearch = (e) => {
+        setKeyWord(e.target.value)
+    };
     const searchDataSource = useMemo(() => {
         if (keyword) {
 
@@ -123,14 +127,11 @@ const Users = () => {
                 onChange={onChange} />
 
             <SearchContainer>
-                {/* <SearchBox onChange={onSearch} /> */}
-                <div>
 
-                    <ButtonCreate onClick={onCreate}>New Users</ButtonCreate>
-                </div>
+                <SearchBox onChange={onSearch} />
+                <ButtonCreate onClick={onCreate}>New Users</ButtonCreate>
 
             </SearchContainer>
-
 
             <TableUser
                 loading={tableloading}

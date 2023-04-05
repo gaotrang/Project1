@@ -1,8 +1,8 @@
 
-import { CheckOutlined, UserOutlined } from '@ant-design/icons'
+import { UserOutlined, SkinOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
 import { Header, Main, Footer, Sidebar, Content, Logo, Layout, MenuItem } from './styled';
-// import AuthUser from "./AuthUser";
+import AuthUser from "./AuthUser";
 
 const DefaultLayout = ({ children }) => {
 
@@ -11,13 +11,13 @@ const DefaultLayout = ({ children }) => {
             <Sidebar>
                 <Logo>Green Academy</Logo>
                 <MenuItem>
-                    <Link to='/DashboardUser'>
-                        <CheckOutlined />DashboardUser
+                    <Link to='/user'>
+                        <UserOutlined />User
                     </Link>
                 </MenuItem>
                 <MenuItem>
-                    <Link to='/DashboardProducts'>
-                        <UserOutlined /> DashboardProducts
+                    <Link to='/products'>
+                        <SkinOutlined /> Products
                     </Link>
                 </MenuItem>
             </Sidebar>
@@ -25,14 +25,14 @@ const DefaultLayout = ({ children }) => {
             <Content>
 
                 <Header>
-                    {/* <AuthUser /> */}
+                    <AuthUser />
                 </Header>
 
                 <Main>
                     {children}
                 </Main>
 
-                <Footer>Powered by </Footer>
+                <Footer>Powered by GaoTrang </Footer>
 
             </Content>
 

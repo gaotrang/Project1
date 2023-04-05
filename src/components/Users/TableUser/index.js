@@ -1,7 +1,11 @@
 import { Table } from "antd";
-import { Actions, ButtonActions, User, Image } from "./styled"
+import { Actions, ButtonEdit, ButtonDelete, User, Image } from "./styled"
+
+import { useLocation, useNavigate, } from "react-router-dom";
 
 const TableUser = (props) => {
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const columns = [
         {
@@ -47,21 +51,21 @@ const TableUser = (props) => {
             render: (text, item) => {
                 return (
                     <Actions>
-                        <ButtonActions
+                        <ButtonEdit
                             disabled={props.itemloading}
                             onClick={() => {
                                 props.onEdit(item.id);
                             }}
                         >Edit
-                        </ButtonActions>
+                        </ButtonEdit>
 
-                        <ButtonActions
+                        <ButtonDelete
                             disabled={props.itemloading}
                             onClick={() => {
                                 props.onDelete(item.id);
                             }}
                         >Delete
-                        </ButtonActions>
+                        </ButtonDelete>
                     </Actions>
                 );
             },
@@ -71,7 +75,16 @@ const TableUser = (props) => {
         <Table
             loading={props.loading}
             dataSource={props.dataSource}
-            columns={columns} />
+            columns={columns}
+            onChange={(pagination) => {
+                const searchParams = new URLSearchParams(location.search)
+                searchParams.set("page", pagination.current);
+                searchParams.set("limit", pagination.pageSize);
+
+                navigate(`${location.pathname}?${searchParams.toString()}`);
+
+
+            }} />
     )
 };
 

@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { Input, Button } from "antd";
 
 export const ButtonCreate = styled(Button)` 
-    display: block;
-    margin: 10px 0px;
+    display: flex;
+    background: gray; 
+    
     &:hover {
         background: orange;
         color: #fff;

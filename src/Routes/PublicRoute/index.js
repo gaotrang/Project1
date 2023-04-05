@@ -8,7 +8,7 @@ const PublicRoute = ({ component }) => {
 
         const token = localStorage.getItem('token')
         if (token) {
-            navigate("/dashboard");
+            navigate("/user");
         }
     }, []);
 

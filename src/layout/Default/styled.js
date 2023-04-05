@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const Layout = styled.div`
     display: grid;
+    background-color: #3c6382;
     grid-template-columns: 17.5rem 1fr;
 
 `
 export const Sidebar = styled.div`
-background-color: #f3f4f6;
+background-color: #bdc3c7;
 
     a {
         display: block;
@@ -46,7 +47,7 @@ export const Header = styled.header`
     justify-content: flex-end;
     align-items: center;
     background-color: #ffffff;
-
+    
     padding: 1rem;
     margin-bottom: 1rem;
 

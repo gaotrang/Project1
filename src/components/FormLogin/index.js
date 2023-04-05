@@ -11,7 +11,7 @@ const FormLogin = () => {
 
         if (values.email === 'admin@gmail.com' && values.password === 'admin123') {
             localStorage.setItem('token', `${values.email}${values.password}`)
-            navigate('/dashboard')
+            navigate('/user')
         }
         else {
             message.error('Thông tin đăng nhập không chính xác.')
