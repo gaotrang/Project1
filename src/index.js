@@ -9,20 +9,26 @@ import Welcome from './Pages/Welcome';
 import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
 import DashboardProducts from './Pages/DashboardProducts';
+import LandingPage from './Pages/LandingPage';
+
 
 
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/admin/landing",
+    element: <PublicRoute component={<LandingPage />} />,
+  },
+  {
+    path: "/admin",
     element: <PublicRoute component={<Welcome />} />,
   },
   {
-    path: "/user",
+    path: "/admin/user",
     element: <PrivateRoute component={<DashboardUser />} />,
   },
   {
-    path: "/products",
+    path: "/admin/products",
     element: <PrivateRoute component={<DashboardProducts />} />,
   },
 

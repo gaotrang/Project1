@@ -9,10 +9,13 @@ import axios from "axios";
 import { Modal } from "antd";
 // import ButtonImport from "./ButtonImport";
 import SearchBox from "./SearchBox";
+import { useLocation } from "react-router-dom"
+
 const DEFAULT_PRODUCTS = { name: "", code: "", price: "", description: "", thumbnail: "" }
 
 const Products = () => {
     // const [modal, contextHolder] = Modal.useModal();
+    const location = useLocation();
     const [formData, setFormData] = useState(DEFAULT_PRODUCTS)
     const [dataSource, setDataSource] = useState([])
     const [open, setOpen] = useState(false)
@@ -22,19 +25,22 @@ const Products = () => {
     const [itemloading, setItemLoading] = useState(false)
 
     useEffect(() => {
-        axios.get('https://6401de2aab6b7399d0ae7950.mockapi.io/api/1/products').then((res) => {
-            setDataSource(res.data)
-        })
-    }, []);
+        fetchData();
+    }, [location]);
 
     const fetchData = () => {
+
+        const searchParams = new URLSearchParams(location.search);
+        const baseUrl = "https://6401de2aab6b7399d0ae7950.mockapi.io/api/1/products";
+        const keyword = searchParams.has("keyword") ? searchParams.get("keyword") : "";
+        const page = searchParams.has("page") ? searchParams.get("page") : 1;
+        const limit = searchParams.has("limit") ? searchParams.get("limit") : 10;
         setTableLoading(true)
-        axios
-            .get('https://6401de2aab6b7399d0ae7950.mockapi.io/api/1/products')
-            .then((res) => {
-                setDataSource(res.data)
-                setTableLoading(false)
-            });
+        //muốn xem tổng số trang thì bỏ qua &page=${page}&limit=${limit} dòng bên dưới
+        axios.get(`${baseUrl}?keyword=${keyword}&page=${page}&limit=${limit}`).then((res) => {
+            setDataSource(res.data)
+            setTableLoading(false)
+        });
     };
 
     const onCreate = () => {

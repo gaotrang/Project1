@@ -5,7 +5,13 @@ export const User = styled.div`
     grid-template-columns: 3rem 1fr;
     grid-gap: 0.5rem;
     cursor: pointer;
-
+    
+    position: relative;
+    animation: mymove1 5s 1;
+    }
+    @keyframes mymove1 {
+    from {right: 200px;}
+    to {right: 0px;}
 
     
 `;

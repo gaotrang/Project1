@@ -3,17 +3,18 @@ import { Input, Button } from "antd";
 
 export const ButtonCreate = styled(Button)` 
     display: block;
-    background: gray;
+    background: #fff;
+    border-color: #3c6382;
 
     &:hover {
-        background: orange;
+        background-color: #fff;
         color: #eeeeee;
-        border-color: #fff
+        border-color: #fff;
 
     }
     &:active, &:focus {
-        background: ;
-        color: #000000;
+       
+        color: #3c6382;
         border-color: #fff;
     }
 `

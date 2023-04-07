@@ -8,29 +8,29 @@ export const Actions = styled.div`
     }
 `;
 export const ButtonEdit = styled(Button)`
-background: gray;
+background: #fff;
 color: #000000;
 border-color: #000000
 
 &:hover {
-    background: red;
-    color: #eeeeee;
+    background: #fff;
+    color: #eb2f06;
     border-color: #000000
 
 }
 &:active, &:focus {
-    background: ;
+    background: #eb2f06;
     color: #000000;
-    border-color: blued
+    border-color: #eb2f06;
 }
 `;
 export const ButtonDelete = styled(Button)`
-background: #c0392b;
+background: #eb2f06;
 color: #000000;
 border-color: #000000
 
 &:hover {
-    background: red;
+    background: #eb2f06;
     color: #eeeeee;
     border-color: #000000
 
@@ -38,7 +38,7 @@ border-color: #000000
 &:active, &:focus {
     background: ;
     color: #000000;
-    border-color: blued
+    border-color: blued;
 }
 `;
 export const User = styled.div`

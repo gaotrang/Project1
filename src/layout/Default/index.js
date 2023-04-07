@@ -9,12 +9,15 @@ const DefaultLayout = ({ children }) => {
     return (
         <Layout>
             <Sidebar>
-                <Logo>Green Academy</Logo>
+                <Logo>
+                    Green Academy
+                </Logo>
                 <MenuItem>
                     <Link to='/user'>
                         <UserOutlined />User
                     </Link>
                 </MenuItem>
+                <br></br>
                 <MenuItem>
                     <Link to='/products'>
                         <SkinOutlined /> Products
